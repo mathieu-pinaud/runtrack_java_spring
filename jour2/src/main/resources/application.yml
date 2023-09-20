@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: dev
+    active: prod
 
 ---
 spring:
@@ -16,6 +16,6 @@ spring:
     activate:
       on-profile: prod
 greeting:
-  message: Hello World (Prod)
+  message: Ca dit quoi ?
 
 
