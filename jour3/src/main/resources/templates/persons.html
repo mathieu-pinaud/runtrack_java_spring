@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Person Management</title>
+</head>
+<body>
+    <h1>Person Management</h1>
+    <h2>Creation</h2>
+    <!-- Formulaire de création -->
+    <form th:action="@{/persons/create}" method="post">
+        <label>Name: <input type="text" name="name" required/></label>
+        <label>Age: <input type="number" name="age" required/></label>
+        <input type="submit" value="Create" />
+    </form>
+
+    <!-- Liste des personnes -->
+    <h2>List of Persons</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="person : ${persons}">
+            <td th:text="${person.name}"></td>
+            <td th:text="${person.age}"></td>
+            <td>
+                <form th:action="@{/persons/delete/{id}(id=${person.id})}" method="post" style="display: inline;">
+                    <input type="hidden" name="id" th:value="${person.id}" />
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/persons/edit/{id}(id=${person.id})}" method="post" style="display: inline;">
+                    <input type="hidden" name="id" th:value="${person.id}" />
+                    <label>Name: <input type="text" name="name" /></label>
+                    <label>Age: <input type="number" name="age"/></label>
+                    <button type="submit">Edit</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

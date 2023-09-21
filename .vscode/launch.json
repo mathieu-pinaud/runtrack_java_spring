@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Jour3Application",
+            "request": "launch",
+            "mainClass": "com.example.jour3.Jour3Application",
+            "projectName": "jour3"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

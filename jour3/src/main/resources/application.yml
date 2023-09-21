@@ -1,0 +1,46 @@
+spring:
+  profiles:
+    active: prod
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+greeting:
+  message: Hello World (Dev)
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+greeting:
+  message: Ca dit quoi ?
+---
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb  # URL de la base de données H2 en mémoire
+    driverClassName: org.h2.Driver  # Classe du pilote de base de données H2
+    username: sa  # Nom d'utilisateur de la base de données (par défaut : sa)
+    password: password  # Mot de passe de la base de données (par défaut : vide)
+  h2:
+    console:
+      enabled: true  # Activer la console H2
+  jpa:
+    hibernate:
+      ddl-auto: update  # Stratégie de mise à jour de la base de données (vous pouvez utiliser "create-drop" pour recréer la base de données à chaque démarrage)
+    show-sql: true  # Afficher les requêtes SQL dans la console
+
+server:
+  port: 8080  # Port sur lequel l'application sera déployée
+  
+---
+
+spring:
+  thymeleaf:
+    enabled: true
+    prefix: classpath:/templates/
+    suffix: .html
+
